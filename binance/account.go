@@ -125,6 +125,17 @@ func (b *Binance) CheckOrder(query OrderQuery) (status OrderStatus, err error) {
     return
 }
 
+// Retrieve All Orders
+func (b *Binance) GetAllOrders() (orders []OrderStatus, err error) {
+    _, err = b.client.do("GET", "v3/allOrders", "", true, &orders)
+
+    if err != nil {
+        return
+    }
+
+    return
+}
+
 
 // Retrieve All Open Orders
 func (b *Binance) GetAllOpenOrders() (orders []OrderStatus, err error) {
